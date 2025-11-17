@@ -1,5 +1,3 @@
---- START OF FILE script.js ---
-
 // ========== THEME TOGGLE ==========
 const themeToggleInput = document.getElementById("theme-toggle-input");
 const body = document.body;
@@ -267,3 +265,4 @@ activityLinks.forEach((link) => {
 if (activityCards.length > 0) {
   showActivity(activityCards[0].id);
 }
+
