@@ -1,3 +1,5 @@
+--- START OF FILE script.js ---
+
 // ========== THEME TOGGLE ==========
 const themeToggleInput = document.getElementById("theme-toggle-input");
 const body = document.body;
@@ -91,9 +93,6 @@ function resetGlobalTimer() {
 
 globalStartStopButton.addEventListener("click", startStopGlobalTimer);
 globalResetButton.addEventListener("click", resetGlobalTimer);
-
-// Inicializar display del timer global
-updateGlobalTimerDisplay();
 
 // ========== ACTIVITY TIMERS (Individual Countdown) ==========
 let activityIntervals = {};
@@ -225,18 +224,18 @@ function showActivity(activityId) {
     setTimeout(() => {
       selectedActivity.classList.add("active");
     }, 50);
+
+    // --- MODIFICATION START ---
+    // Update active state on sidebar links
+    activityLinks.forEach(link => link.classList.remove('active'));
+    const correspondingLink = document.querySelector(`.activity-list a[href="#${activityId}"]`);
+    if (correspondingLink) {
+        correspondingLink.classList.add('active');
+    }
+    // --- MODIFICATION END ---
+    
     updateProgressBar(activityId);
   }
-
-  // Actualizar estado activo en el panel izquierdo
-  activityLinks.forEach((link) => {
-    const targetId = link.getAttribute("href").substring(1);
-    if (targetId === activityId) {
-      link.classList.add("active");
-    } else {
-      link.classList.remove("active");
-    }
-  });
 }
 
 // Function to update the progress bar
