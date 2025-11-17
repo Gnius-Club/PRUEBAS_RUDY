@@ -1,3 +1,5 @@
+--- START OF FILE style.css ---
+
 /* Define CSS Variables (Custom Properties) */
 :root {
     --primary-color: #00a3a3;
@@ -217,7 +219,7 @@ aside.activity-list a {
     border-radius: 30px;
     font-weight: bold;
     font-family: 'Arial', sans-serif;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 aside.activity-list a[href="#activity-0"] {
@@ -229,6 +231,15 @@ aside.activity-list a:hover {
     background-color: rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
 }
+
+/* NEW: Style for the active link in the sidebar */
+aside.activity-list a.active,
+aside.activity-list a.active:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(0);
+}
+
 
 .sidebar-info {
     margin-top: 1.5rem;
@@ -705,7 +716,7 @@ main.content {
     border-radius: 6px;
 }
 
-.slide-content p {
+.slide-content p, .slide-content ol {
     margin: 0.75rem 0;
 }
 
@@ -879,23 +890,33 @@ body.dark-mode aside.activity-list a:hover {
     background-color: var(--primary-color);
 }
 
+/* Active link in dark mode */
+body.dark-mode aside.activity-list a.active,
+body.dark-mode aside.activity-list a.active:hover {
+    background-color: #00c4c4; /* Brighter version of primary for better contrast */
+    color: #121212;
+}
+
 body.dark-mode .sidebar-info {
     color: #ccc;
 }
 
 body.dark-mode .command-section,
-body.dark-mode .role-card,
 body.dark-mode .slide-reference,
 body.dark-mode .tps-phase {
     background-color: #2a2a2a;
 }
+body.dark-mode .role-teacher { background-color: #432a0c; }
+body.dark-mode .role-xolo { background-color: #1e3a5f; }
+body.dark-mode .role-student { background-color: #2e4b26; }
 
 body.dark-mode .objective-box,
 body.dark-mode .prompt-box pre,
 body.dark-mode .essential-card,
 body.dark-mode .timeline-content,
 body.dark-mode .slide-content,
-body.dark-mode .prep-list {
+body.dark-mode .prep-list,
+body.dark-mode .challenge-text {
     background-color: #333;
     color: var(--dark-text-color);
 }
