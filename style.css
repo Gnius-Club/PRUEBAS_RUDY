@@ -366,7 +366,7 @@ main.content {
 .command-section {
     margin-bottom: 2rem;
     padding: 1.5rem;
-    background-color: #f5f5f5;
+    background-color: #fafafa;
     border-radius: 8px;
     border-left: 4px solid var(--primary-color);
 }
@@ -376,19 +376,25 @@ main.content {
     margin-bottom: 1rem;
     color: var(--primary-color);
     font-size: 1.3em;
+    font-weight: 600;
 }
 
 .objective-box {
     background-color: white;
-    padding: 1rem;
+    padding: 1.25rem;
     border-radius: 6px;
     border: 2px solid var(--accent-blue);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .objective-box p {
     margin: 0;
     font-size: 1.05em;
     line-height: 1.7;
+}
+
+.objective-box strong {
+    color: var(--primary-color);
 }
 
 /* ========== XOLO PROMPT BOX ========== */
@@ -445,46 +451,60 @@ main.content {
 /* ========== ESSENTIALS GRID ========== */
 .essentials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    margin-top: 1rem;
 }
 
 .essential-card {
     background-color: white;
-    padding: 1rem;
+    padding: 1.25rem;
     border-radius: 8px;
     border: 2px solid var(--secondary-color);
     text-align: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .essential-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 16px rgba(0, 163, 163, 0.2);
+    border-color: var(--primary-color);
 }
 
 .essential-icon {
     font-size: 2.5em;
     margin-bottom: 0.5rem;
+    display: block;
 }
 
 .essential-card h4 {
     margin: 0.5rem 0;
     color: var(--primary-color);
     font-size: 1.1em;
+    font-weight: 600;
 }
 
 .essential-card p {
-    margin: 0;
-    font-size: 0.95em;
+    margin: 0.5rem 0 0 0;
+    font-size: 0.9em;
     color: #555;
+    line-height: 1.5;
 }
 
 .essential-card code {
     background-color: #f0f0f0;
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
-    font-size: 0.9em;
+    font-size: 0.85em;
+    color: #d32f2f;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .essentials-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ========== MATERIALS CHECKLIST ========== */
