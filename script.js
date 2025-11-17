@@ -1,3 +1,5 @@
+--- START OF FILE script.js ---
+
 // ========== THEME TOGGLE ==========
 const themeToggleInput = document.getElementById("theme-toggle-input");
 const body = document.body;
@@ -72,7 +74,7 @@ function startStopGlobalTimer() {
           clearInterval(globalInterval);
           globalTimerRunning = false;
           globalStartStopButton.textContent = "Start";
-          alert("⏰ ¡Tiempo de sesión terminado! (40 minutos)");
+          alert("⏰ ¡Tiempo de misión terminado! (40 minutos)");
         }
       }
     }, 1000);
@@ -222,6 +224,16 @@ function showActivity(activityId) {
     setTimeout(() => {
       selectedActivity.classList.add("active");
     }, 50);
+
+    // --- MODIFICATION START ---
+    // Update active state on sidebar links
+    activityLinks.forEach(link => link.classList.remove('active'));
+    const correspondingLink = document.querySelector(`.activity-list a[href="#${activityId}"]`);
+    if (correspondingLink) {
+        correspondingLink.classList.add('active');
+    }
+    // --- MODIFICATION END ---
+    
     updateProgressBar(activityId);
   }
 }
