@@ -1,3 +1,5 @@
+--- START OF FILE index.html ---
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,996 +8,12 @@
     <title>Playbook-P4-TM05-Optimizado</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-/* Define CSS Variables (Custom Properties) */
-:root {
-    --primary-color: #00a3a3;
-    --secondary-color: #e0f2f1;
-    --background-color: #f9f9f9;
-    --text-color: #333;
-    --light-gray: #ddd;
-    --accent-orange: #ff6b35;
-    --accent-green: #4caf50;
-    --accent-blue: #2196f3;
-    
-    /* Dark Mode Colors */
-    --dark-primary-color: #007979;
-    --dark-secondary-color: #005050;
-    --dark-background-color: #121212;
-    --dark-text-color: #eee;
-    --dark-light-gray: #444;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-size: 1rem;
-}
-
-/* ========== HEADER ========== */
-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-
-header h1 {
-    font-size: 1.75em;
-    margin: 0;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-}
-
-header h1 .book-icon {
-    margin-right: 0.5rem;
-    font-size: 1.2em;
-}
-
-.header-widgets {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    align-items: center;
-}
-
-.timer-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: white;
-    font-size: 1.2rem;
-    padding: 0.75rem 1rem;
-    border-radius: 15px;
-    background-color: rgba(0,0,0, 0.2);
-    width: fit-content;
-}
-
-.timer-container button {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    border: none;
-    padding: 0.5rem 0.75rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    font-weight: 500;
-}
-
-.timer-container button:hover {
-    background-color: #b2dfdb;
-}
-
-.theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.theme-toggle i {
-    margin: 0 0.5rem;
-    color: white;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-}
-
-input:checked + .slider {
-    background-color: var(--primary-color);
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px var(--primary-color);
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-
-/* ========== MAIN LAYOUT ========== */
-.main-container {
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh - 6rem);
-}
-
-/* ========== ASIDE (Activity List) ========== */
-aside.activity-list {
-    width: 100%;
-    background-color: var(--secondary-color);
-    padding: 1rem;
-    border-bottom: 1px solid var(--light-gray);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-aside.activity-list h2 {
-    font-size: 1.25em;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-    text-align: center;
-}
-
-aside.activity-list ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-}
-
-aside.activity-list li {
-    margin-bottom: 0;
-}
-
-aside.activity-list a {
-    color: var(--text-color);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5em;
-    width: auto;
-    padding: 0.5rem 1.2rem;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 30px;
-    font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-aside.activity-list a[href="#activity-0"] {
-    font-size: 1.3em;
-    padding: 0.6rem 1rem;
-}
-
-aside.activity-list a:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
-}
-
-.sidebar-info {
-    margin-top: 1.5rem;
-    font-size: 0.8em;
-    color: #666;
-    padding: 0 0.5rem;
-}
-
-.sidebar-info p {
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
-
-/* ========== MAIN CONTENT ========== */
-main.content {
-    flex: 1;
-    padding: 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    overflow-y: auto;
-}
-
-.progress-bar {
-    background-color: var(--light-gray);
-    height: 0.7rem;
-    margin-bottom: 1.5rem;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.progress {
-    background-color: var(--primary-color);
-    height: 100%;
-    width: 0%;
-    transition: width 0.3s ease;
-    border-radius: 5px;
-}
-
-/* ========== ACTIVITY CARDS ========== */
-.activity-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem;
-    padding: 1.5rem;
-    transition: opacity 0.333s ease;
-    opacity: 0;
-    position: absolute;
-    width: calc(100% - 2rem);
-}
-
-.activity-card.active {
-    display: block;
-    opacity: 1;
-    position: relative;
-}
-
-.activity-card > h2 {
-    display: flex;
-    align-items: center;
-    font-size: 1.6em;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
-}
-
-.activity-card > h2 .book-icon {
-    margin-right: 0.5rem;
-    font-size: 1em;
-}
-
-.overview-subtitle {
-    font-size: 1em;
-    color: #777;
-    margin-top: -0.2rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    font-style: italic;
-}
-
-/* ========== ACTIVITY HEADER (con timer) ========== */
-.activity-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.activity-header h2 {
-    margin: 0;
-    flex: 1;
-    min-width: 250px;
-}
-
-.activity-timer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: var(--secondary-color);
-    padding: 0.75rem 1rem;
-    border-radius: 10px;
-}
-
-.activity-duration {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.timer-start-btn {
-    background-color: var(--accent-green);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.timer-start-btn:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-}
-
-.timer-start-btn.running {
-    background-color: var(--accent-orange);
-}
-
-.timer-start-btn.running:hover {
-    background-color: #e55a2b;
-}
-
-/* ========== COMMAND SECTIONS (De un Vistazo) ========== */
-.command-section {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    border-left: 4px solid var(--primary-color);
-}
-
-.command-section h3 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-    font-size: 1.3em;
-}
-
-.objective-box {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 6px;
-    border: 2px solid var(--accent-blue);
-}
-
-.objective-box p {
-    margin: 0;
-    font-size: 1.05em;
-    line-height: 1.7;
-}
-
-/* ========== XOLO PROMPT BOX ========== */
-.xolo-prompt {
-    border-left-color: var(--accent-orange);
-}
-
-.prompt-box {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.prompt-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.prompt-label {
-    font-weight: 600;
-    font-size: 0.95em;
-}
-
-.copy-btn {
-    background-color: white;
-    color: var(--primary-color);
-    border: none;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
-}
-
-.copy-btn:hover {
-    background-color: var(--secondary-color);
-}
-
-.prompt-box pre {
-    padding: 1rem;
-    margin: 0;
-    background-color: #fafafa;
-    border: 1px solid #e0e0e0;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    font-size: 0.9em;
-    line-height: 1.6;
-}
-
-/* ========== ESSENTIALS GRID ========== */
-.essentials-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.essential-card {
-    background-color: white;
-    padding: 1.25rem;
-    border-radius: 8px;
-    border: 2px solid var(--secondary-color);
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
-.essential-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0, 163, 163, 0.2);
-    border-color: var(--primary-color);
-}
-
-.essential-icon {
-    font-size: 2.5em;
-    margin-bottom: 0.5rem;
-    display: block;
-}
-
-.essential-card h4 {
-    margin: 0.5rem 0;
-    color: var(--primary-color);
-    font-size: 1.1em;
-    font-weight: 600;
-}
-
-.essential-card p {
-    margin: 0.5rem 0 0 0;
-    font-size: 0.9em;
-    color: #555;
-    line-height: 1.5;
-}
-
-.essential-card code {
-    background-color: #f0f0f0;
-    padding: 0.2rem 0.4rem;
-    border-radius: 3px;
-    font-size: 0.85em;
-    color: #d32f2f;
-    font-weight: 600;
-}
-
-@media (max-width: 768px) {
-    .essentials-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ========== MATERIALS CHECKLIST ========== */
-.materials-checklist {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.materials-checklist label {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem;
-    background-color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.materials-checklist label:hover {
-    background-color: #f0f0f0;
-}
-
-.materials-checklist input[type="checkbox"] {
-    margin-right: 0.75rem;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
-.materials-checklist input[type="checkbox"]:checked + * {
-    text-decoration: line-through;
-    color: #999;
-}
-
-/* ========== TIMELINE ========== */
-.timeline {
-    position: relative;
-    padding-left: 2rem;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 0.5rem;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background-color: var(--primary-color);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 1.5rem;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: -1.75rem;
-    top: 0.25rem;
-    width: 2rem;
-    height: 2rem;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.1em;
-}
-
-.timeline-content {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.timeline-content strong {
-    display: block;
-    color: var(--primary-color);
-    font-size: 1.1em;
-    margin-bottom: 0.3rem;
-}
-
-.timeline-content p {
-    margin: 0.5rem 0 0 0;
-    color: #666;
-    font-size: 0.95em;
-}
-
-.time-badge {
-    display: inline-block;
-    background-color: var(--accent-orange);
-    color: white;
-    padding: 0.2rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.85em;
-    font-weight: 600;
-    margin-left: 0.5rem;
-}
-
-/* ========== PREP SECTION ========== */
-.prep-section {
-    border-left-color: var(--accent-green);
-}
-
-.prep-list {
-    background-color: white;
-    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
-    border-radius: 6px;
-    margin: 0;
-}
-
-.prep-list li {
-    margin-bottom: 0.75rem;
-    font-size: 1em;
-    line-height: 1.6;
-}
-
-/* ========== ROLES SECTION ========== */
-.roles-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.role-card {
-    padding: 1rem;
-    border-radius: 8px;
-    border: 2px solid;
-}
-
-.role-card h4 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    font-size: 1.1em;
-}
-
-.role-card ul {
-    margin: 0;
-    padding-left: 1.2rem;
-}
-
-.role-card li {
-    margin-bottom: 0.5rem;
-    font-size: 0.95em;
-    line-height: 1.5;
-}
-
-.role-teacher {
-    background-color: #fff3e0;
-    border-color: var(--accent-orange);
-}
-
-.role-teacher h4 {
-    color: var(--accent-orange);
-}
-
-.role-xolo {
-    background-color: #e3f2fd;
-    border-color: var(--accent-blue);
-}
-
-.role-xolo h4 {
-    color: var(--accent-blue);
-}
-
-.role-student {
-    background-color: #f1f8e9;
-    border-color: var(--accent-green);
-}
-
-.role-student h4 {
-    color: var(--accent-green);
-}
-
-/* ========== SLIDE REFERENCE ========== */
-.slide-reference {
-    background-color: #fafafa;
-    padding: 1.25rem;
-    border-radius: 8px;
-    border: 2px dashed var(--primary-color);
-    margin-bottom: 1.5rem;
-}
-
-.slide-reference h4 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-.slide-content {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 6px;
-}
-
-.slide-content p {
-    margin: 0.75rem 0;
-}
-
-.slide-content ul {
-    margin: 0.75rem 0;
-    padding-left: 1.5rem;
-}
-
-.slide-content li {
-    margin-bottom: 0.5rem;
-}
-
-.highlight-text {
-    background-color: #fff9c4;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    border-left: 4px solid #fbc02d;
-    font-weight: 600;
-}
-
-.pseudocode {
-    background-color: #f5f5f5;
-    padding: 1rem;
-    border-radius: 6px;
-    font-family: 'Courier New', monospace;
-    margin: 1rem 0;
-}
-
-.pseudocode p {
-    margin: 0.5rem 0;
-}
-
-/* ========== OPTIONAL SCRIPT (Collapsible) ========== */
-.optional-script {
-    margin-top: 1.5rem;
-}
-
-.collapsible-button {
-    background-color: var(--light-gray);
-    color: var(--text-color);
-    border: none;
-    padding: 0.75rem 1rem;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    border-radius: 6px;
-    font-size: 0.95em;
-    font-weight: 600;
-    transition: background-color 0.2s ease;
-}
-
-.collapsible-button:hover {
-    background-color: #d0d0d0;
-}
-
-.collapsible-content {
-    display: none;
-    padding: 1rem;
-    margin-top: 0.5rem;
-    background-color: #f9f9f9;
-    border-radius: 6px;
-    border: 1px solid var(--light-gray);
-}
-
-.collapsible-content.active {
-    display: block;
-}
-
-.dialogue {
-    padding: 1rem;
-    border-radius: 6px;
-    line-height: 1.7;
-}
-
-.dialogue.assistant {
-    background-color: #e0f7fa;
-    border-left: 4px solid var(--accent-blue);
-}
-
-/* ========== CHALLENGE PROMPT ========== */
-.challenge-prompt {
-    margin-top: 1.5rem;
-    padding: 1.25rem;
-    background-color: #fff3e0;
-    border-radius: 8px;
-    border: 2px solid var(--accent-orange);
-}
-
-.challenge-prompt h4 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: var(--accent-orange);
-}
-
-.challenge-text {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 6px;
-    font-style: italic;
-    font-weight: 500;
-    border-left: 4px solid var(--accent-orange);
-}
-
-/* ========== THINK-PAIR-SHARE STRUCTURE ========== */
-.tps-structure {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.tps-phase {
-    background-color: #f5f5f5;
-    padding: 1rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--primary-color);
-}
-
-.tps-phase h4 {
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-    color: var(--primary-color);
-}
-
-.tps-phase p {
-    margin: 0.5rem 0;
-}
-
-.tps-phase ul {
-    margin: 0.75rem 0;
-    padding-left: 1.5rem;
-}
-
-/* ========== DARK MODE ========== */
-body.dark-mode {
-    background-color: var(--dark-background-color);
-    color: var(--dark-text-color);
-}
-
-body.dark-mode header {
-    background-color: var(--dark-primary-color);
-}
-
-body.dark-mode .activity-card {
-    background-color: var(--dark-light-gray);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-mode .activity-card > h2 {
-    color: #66d9ef;
-}
-
-body.dark-mode .progress-bar {
-    background-color: var(--dark-light-gray);
-}
-
-body.dark-mode aside.activity-list {
-    background-color: var(--dark-secondary-color);
-    border-color: var(--dark-light-gray);
-}
-
-body.dark-mode aside.activity-list h2 {
-    color: var(--dark-text-color);
-}
-
-body.dark-mode aside.activity-list a {
-    color: var(--dark-text-color);
-    background-color: var(--dark-primary-color);
-}
-
-body.dark-mode aside.activity-list a:hover {
-    background-color: var(--primary-color);
-}
-
-body.dark-mode .sidebar-info {
-    color: #ccc;
-}
-
-body.dark-mode .command-section,
-body.dark-mode .role-card,
-body.dark-mode .slide-reference,
-body.dark-mode .tps-phase {
-    background-color: #2a2a2a;
-}
-
-body.dark-mode .objective-box,
-body.dark-mode .prompt-box pre,
-body.dark-mode .essential-card,
-body.dark-mode .timeline-content,
-body.dark-mode .slide-content,
-body.dark-mode .prep-list {
-    background-color: #333;
-    color: var(--dark-text-color);
-}
-
-body.dark-mode .collapsible-button {
-    background-color: var(--dark-light-gray);
-    color: var(--dark-text-color);
-}
-
-body.dark-mode .collapsible-content {
-    background-color: #2a2a2a;
-    border-color: var(--dark-light-gray);
-}
-
-body.dark-mode .dialogue.assistant {
-    background-color: #263238;
-    color: var(--dark-text-color);
-}
-
-body.dark-mode .materials-checklist label {
-    background-color: #333;
-}
-
-body.dark-mode .materials-checklist label:hover {
-    background-color: #444;
-}
-
-/* ========== MEDIA QUERIES ========== */
-@media (min-width: 768px) {
-    header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    header h1 {
-        justify-content: flex-start;
-        width: auto;
-    }
-
-    .header-widgets {
-        flex-direction: row;
-        width: auto;
-        justify-content: flex-end;
-    }
-
-    .main-container {
-        flex-direction: row;
-    }
-
-    aside.activity-list {
-        width: 220px;
-        border-right: 1px solid var(--light-gray);
-        border-bottom: none;
-        padding: 1rem;
-    }
-
-    aside.activity-list h2 {
-        text-align: left;
-    }
-
-    aside.activity-list ul {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-    }
-
-    aside.activity-list li {
-        margin-bottom: 0.75rem;
-    }
-
-    .sidebar-info p {
-        text-align: left;
-    }
-
-    .activity-header {
-        flex-wrap: nowrap;
-    }
-}
-
-@media (max-width: 767px) {
-    .activity-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .activity-timer {
-        width: 100%;
-        justify-content: space-between;
-    }
-}
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1><span class="book-icon">📋</span> <strong>Playbook: Sesión 9 - 4to Primaria</strong></h1>
+        <h1><span class="book-icon">📋</span> <strong>Playbook: Misión 9 - 4to Primaria</strong></h1>
         <div class="header-widgets">
             <div class="timer-container">
                 <span id="global-timer">⏱️ 40:00</span>
@@ -1037,12 +55,11 @@ body.dark-mode .materials-checklist label:hover {
                 <div class="progress"></div>
             </div>
 
-            <!-- ACTIVIDAD 0: DE UN VISTAZO - NUEVA ESTRUCTURA -->
+            <!-- ACTIVIDAD 0: DE UN VISTAZO -->
             <div class="activity-card" id="activity-0">
                 <h2><span class="book-icon">📝</span> De un Vistazo: Comando Central</h2>
-                <p class="overview-subtitle">Todo lo que necesitas para preparar y ejecutar esta sesión en minutos.</p>
+                <p class="overview-subtitle">Todo lo que necesitas para preparar y ejecutar esta misión en minutos.</p>
                 
-                <!-- SECCIÓN 1: OBJETIVOS Y MISIÓN -->
                 <div class="command-section">
                     <h3>🎯 Objetivo de Aprendizaje</h3>
                     <div class="objective-box">
@@ -1050,40 +67,19 @@ body.dark-mode .materials-checklist label:hover {
                     </div>
                 </div>
 
-                <!-- SECCIÓN 2: PROMPT PRINCIPAL DE XOLO -->
                 <div class="command-section xolo-prompt">
                     <h3>🤖 Prompt Principal de XOLO</h3>
                     <div class="prompt-box">
                         <div class="prompt-header">
-                            <span class="prompt-label">Copiar y pegar en el chat de XOLO al inicio:</span>
+                            <span class="prompt-label">Prompt para que los estudiantes inicien con XOLO:</span>
                             <button class="copy-btn" onclick="copyPrompt('main-prompt')">
                                 <i class="fas fa-copy"></i> Copiar
                             </button>
                         </div>
-                        <pre id="main-prompt">Hola XOLO. Hoy vas a ayudar a mis estudiantes de 4to de primaria a aprender sobre la Smart A.I. Lens y reconocimiento de colores.
-
-**Tu misión:**
-1. Explícales de forma simple qué es la A.I. Lens y cómo funciona el reconocimiento de colores
-2. Ayúdalos a entender que la lente usa IA pre-entrenada (ya sabe los colores sin que ellos la entrenen)
-3. Guíalos paso a paso para crear un programa que:
-   - Inicialice la A.I. Lens
-   - Active el modo de reconocimiento de colores
-   - Lea el color detectado
-   - Muestre el nombre del color en la pantalla del Micro:bit
-4. Responde sus dudas sobre cómo funciona el Aprendizaje Automático detrás de la lente
-5. Si terminan rápido, proponles el desafío de hacer que el Cutebot encienda LEDs RGB del mismo color detectado
-
-**Contexto importante:**
-- Usarán MakeCode con la extensión de A.I. Lens
-- Tienen Cutebot con Micro:bit
-- Cuentan con tarjetas de colores para probar
-- Es su primera experiencia con sensores de visión IA
-
-Mantén un tono motivador, usa ejemplos del mundo real y anímales a experimentar.</pre>
+                        <pre id="main-prompt">Mi perfil es [perfil], enséñame qué es el aprendizaje automático y cómo usar la Smart AI Lens para reconocer colores.</pre>
                     </div>
                 </div>
 
-                <!-- SECCIÓN 3: PUNTOS ESENCIALES -->
                 <div class="command-section">
                     <h3>⚡ Puntos Esenciales de la Misión</h3>
                     <div class="essentials-grid">
@@ -1095,7 +91,7 @@ Mantén un tono motivador, usa ejemplos del mundo real y anímales a experimenta
                         <div class="essential-card">
                             <div class="essential-icon">🔧</div>
                             <h4>Habilidad Técnica</h4>
-                            <p>Inicializar la A.I. Lens y usar el comando <code>leer_lente_IA_color()</code></p>
+                            <p>Usar la A.I. Lens para reconocer colores.</p>
                         </div>
                         <div class="essential-card">
                             <div class="essential-icon">🧪</div>
@@ -1110,12 +106,11 @@ Mantén un tono motivador, usa ejemplos del mundo real y anímales a experimenta
                     </div>
                 </div>
 
-                <!-- SECCIÓN 4: MATERIALES -->
                 <div class="command-section">
                     <h3>📦 Checklist de Materiales</h3>
                     <div class="materials-checklist">
-                        <label><input type="checkbox"> Proyector/pantalla + presentación (4 diapositivas)</label>
-                        <label><input type="checkbox"> Internet estable + Chat de XOLO activo</label>
+                        <label><input type="checkbox"> Proyector/pantalla + presentación (5 diapositivas)</label>
+                        <label><input type="checkbox"> Internet estable + Gnius Space con XOLO activo</label>
                         <label><input type="checkbox"> Robots Cutebot (1 por cada 2 estudiantes)</label>
                         <label><input type="checkbox"> Smart A.I. Lens (1 por cada 2 estudiantes)</label>
                         <label><input type="checkbox"> Micro:bits con baterías cargadas</label>
@@ -1124,63 +119,50 @@ Mantén un tono motivador, usa ejemplos del mundo real y anímales a experimenta
                     </div>
                 </div>
 
-                <!-- SECCIÓN 5: FLUJO DE ACTIVIDADES -->
                 <div class="command-section">
-                    <h3>🗓️ Secuencia de la Sesión (40 min)</h3>
+                    <h3>🗓️ Secuencia de la Misión (40 min)</h3>
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-dot">1</div>
                             <div class="timeline-content">
                                 <strong>Saludo + Contexto</strong>
                                 <span class="time-badge">2 min</span>
-                                <p>Bienvenida, presentación de XOLO y motivación inicial</p>
+                                <p>Bienvenida, ingreso a Gnius Space y motivación inicial.</p>
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-dot">2</div>
                             <div class="timeline-content">
-                                <strong>Conceptualización con XOLO</strong>
+                                <strong>A.I. Gym</strong>
                                 <span class="time-badge">8 min</span>
-                                <p>XOLO explica A.I. Lens y modelos pre-entrenados</p>
+                                <p>XOLO explica conceptos de IA y reconocimiento de color.</p>
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-dot">3</div>
                             <div class="timeline-content">
-                                <strong>AI GYM - Práctica Guiada</strong>
-                                <span class="time-badge">10 min</span>
-                                <p>Construir el programa paso a paso con XOLO</p>
+                                <strong>Brain Spark</strong>
+                                <span class="time-badge">20 min</span>
+                                <p>Idear, construir y experimentar un programa con XOLO.</p>
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="timeline-dot">4</div>
                             <div class="timeline-content">
-                                <strong>Brain Spark - Experimentación</strong>
-                                <span class="time-badge">15 min</span>
-                                <p>Probar, modificar y entender limitaciones</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot">5</div>
-                            <div class="timeline-content">
                                 <strong>Gnius STORM - Compartir</strong>
                                 <span class="time-badge">5 min</span>
-                                <p>Demostración y reflexión en parejas</p>
+                                <p>Demostración y reflexión en parejas.</p>
+                            </div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-dot">5</div>
+                            <div class="timeline-content">
+                                <strong>Entrega de Evidencias</strong>
+                                <span class="time-badge">5 min</span>
+                                <p>Subir capturas a Gnius Space y finalizar misión.</p>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- SECCIÓN 6: PREPARACIÓN RÁPIDA -->
-                <div class="command-section prep-section">
-                    <h3>⚡ Preparación de 5 Minutos</h3>
-                    <ol class="prep-list">
-                        <li>Verifica internet y carga del proyector</li>
-                        <li>Abre MakeCode y confirma que la extensión A.I. Lens está disponible</li>
-                        <li>Enciende y prueba 1 Cutebot con A.I. Lens</li>
-                        <li>Copia el prompt principal en el chat de XOLO</li>
-                        <li>Prepara las tarjetas de colores en una mesa accesible</li>
-                    </ol>
                 </div>
             </div>
 
@@ -1194,239 +176,147 @@ Mantén un tono motivador, usa ejemplos del mundo real y anímales a experimenta
                     </div>
                 </div>
 
-                <!-- ROLES CLAROS -->
                 <div class="roles-section">
                     <div class="role-card role-teacher">
                         <h4>👨‍🏫 Rol del Maestro</h4>
                         <ul>
-                            <li>Da la bienvenida con energía</li>
-                            <li>Presenta a XOLO como el experto del día</li>
-                            <li>Proyecta diapositiva 1 con la misión visual</li>
-                            <li>Motiva: "Hoy le daremos visión IA a sus robots"</li>
+                            <li>Dar la bienvenida con energía.</li>
+                            <li>Pedir a los alumnos que ingresen a Gnius Space.</li>
+                            <li>Proyecta diapositiva 1 con la misión visual.</li>
+                            <li>Motiva: "Hoy le daremos visión IA a sus robots".</li>
                         </ul>
                     </div>
                     <div class="role-card role-xolo">
                         <h4>🤖 Rol de XOLO</h4>
                         <ul>
-                            <li>Espera en modo pasivo</li>
-                            <li>Listo para recibir primeras preguntas</li>
+                            <li>XOLO desactivado.</li>
                         </ul>
                     </div>
                     <div class="role-card role-student">
                         <h4>👦 Rol del Alumno</h4>
                         <ul>
-                            <li>Escucha la misión del día</li>
-                            <li>Se prepara para trabajar en parejas</li>
+                            <li>Escucha la misión del día.</li>
+                            <li>Loguearse en Gnius Space.</li>
+                            <li>Preparación para trabajar en parejas.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- DIAPOSITIVA ÚNICA -->
                 <div class="slide-reference">
                     <h4>📊 Diapositiva 1: Misión Visual</h4>
                     <div class="slide-content">
                         <p><strong>Hoy aprenderás:</strong></p>
-                        <p class="highlight-text">🤖 A darle "visión IA" a tu Cutebot para que reconozca colores</p>
-                        <p><strong>Aplicación real:</strong> Los robots en fábricas usan esta tecnología para clasificar objetos por color (frutas, piezas, reciclaje)</p>
-                        <p><strong>Tu aliado:</strong> XOLO te explicará paso a paso cómo funciona y te ayudará a programar</p>
-                    </div>
-                </div>
-
-                <!-- GUION OPCIONAL COLAPSABLE -->
-                <div class="optional-script">
-                    <button class="collapsible-button">📖 Ver guion detallado (opcional)</button>
-                    <div class="collapsible-content">
-                        <p class="dialogue assistant">¡Buenos días, científicos de la IA! Hoy van a lograr algo increíble: le darán "ojos inteligentes" a su Cutebot. Así como ustedes ven los colores, su robot también podrá hacerlo gracias a la <strong>Smart A.I. Lens</strong>. Y lo mejor: <strong>XOLO</strong> será su guía experto. Él les explicará cómo funciona esta tecnología y los ayudará en cada paso. ¿Listos para empezar?</p>
+                        <p class="highlight-text">🤖 A darle "visión IA" a tu Cutebot para que reconozca colores.</p>
+                        <p><strong>Aplicación real:</strong> Los robots en fábricas usan esta tecnología para clasificar objetos por color (frutas, piezas, reciclaje).</p>
+                        <p><strong>Tu aliado:</strong> XOLO te explicará paso a paso cómo funciona y te ayudará a programar.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- ACTIVIDAD 2: CONCEPTUALIZACIÓN CON XOLO -->
+            <!-- ACTIVIDAD 2: A.I. GYM -->
             <div class="activity-card" id="activity-2">
                 <div class="activity-header">
-                    <h2>🧠 Actividad 2: Conceptualización con XOLO</h2>
+                    <h2>🧠 Actividad 2: A.I. Gym</h2>
                     <div class="activity-timer">
                         <span class="activity-duration">⏱️ 8:00</span>
                         <button class="timer-start-btn" data-duration="480">Iniciar</button>
                     </div>
                 </div>
 
-                <!-- ROLES CLAROS -->
                 <div class="roles-section">
                     <div class="role-card role-teacher">
                         <h4>👨‍🏫 Rol del Maestro</h4>
                         <ul>
-                            <li>Proyecta diapositiva 2</li>
-                            <li>Indica: "Abran el chat de XOLO y pregunten"</li>
-                            <li>Circula para asegurar que todos interactúan</li>
-                            <li>Redirige dudas: "Excelente pregunta, consúltalo con XOLO"</li>
+                            <li>Proyecta diapositiva 2.</li>
+                            <li>Abran el chat de Xolo y escriban este prompt (leer el prompt de la diapositiva).</li>
+                            <li>Circula para asegurar que todos interactúan.</li>
+                            <li>Ayúdalos a consultar sus dudas con Xolo.</li>
                         </ul>
                     </div>
                     <div class="role-card role-xolo">
                         <h4>🤖 Rol de XOLO</h4>
                         <ul>
-                            <li>Explica qué es la A.I. Lens y cómo funciona</li>
-                            <li>Introduce el concepto de "modelo pre-entrenado"</li>
-                            <li>Responde dudas sobre Aprendizaje Automático</li>
-                            <li>Usa analogías simples (ej: "como cuando aprendes los colores de bebé")</li>
+                            <li>Explica cómo puede la AI Lens reconocer colores.</li>
+                            <li>Introduce el concepto de aprendizaje automático.</li>
+                            <li>Responde dudas sobre los conceptos.</li>
                         </ul>
                     </div>
                     <div class="role-card role-student">
                         <h4>👦 Rol del Alumno</h4>
                         <ul>
-                            <li>Pregunta a XOLO: "¿Qué es la A.I. Lens?"</li>
-                            <li>Pregunta: "¿Cómo sabe la lente los colores?"</li>
-                            <li>Continúa preguntando hasta que los conceptos queden claros</li>
-                            <li>NO toma notas manualmente (la plataforma registra todo)</li>
+                            <li>Aprender a usar la IA Lens para reconocer colores.</li>
+                            <li>Aprender sobre aprendizaje automático.</li>
+                            <li>Despejar todas sus dudas.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- DIAPOSITIVA ÚNICA -->
                 <div class="slide-reference">
-                    <h4>📊 Diapositiva 2: Pregunta a XOLO</h4>
+                    <h4>📊 Diapositiva 2: A.I. GYM</h4>
                     <div class="slide-content">
-                        <p><strong>💬 Preguntas guía para hacer a XOLO:</strong></p>
-                        <ul>
-                            <li>"¿Qué es la Smart A.I. Lens?"</li>
-                            <li>"¿Cómo funciona el reconocimiento de colores?"</li>
-                            <li>"¿Qué significa que sea un modelo pre-entrenado?"</li>
-                            <li>"¿En qué se parece a cómo yo aprendí los colores?"</li>
-                        </ul>
-                        <p class="highlight-text">🎯 Objetivo: Entender que la IA "aprendió" viendo miles de ejemplos</p>
+                        <p><strong>💬 Escribe este prompt en el chat de XOLO:</strong></p>
+                        <div class="prompt-box">
+                           <pre>"Mi perfil es [perfil], enséñame qué es el aprendizaje automático y cómo usar la Smart AI Lens para reconocer colores."</pre>
+                        </div>
+                        <p class="highlight-text" style="margin-top: 1rem;">🎯 Objetivo: Aprender a usar la A.I. Lens para reconocer colores y qué es el aprendizaje automático.</p>
                     </div>
                 </div>
-
-                <!-- GUION OPCIONAL COLAPSABLE -->
+                
                 <div class="optional-script">
                     <button class="collapsible-button">📖 Ver guion detallado (opcional)</button>
                     <div class="collapsible-content">
-                        <p class="dialogue assistant">Perfecto. Ahora viene la parte emocionante. Abran el chat de <strong>XOLO</strong> en sus computadoras. Él les va a explicar qué es la <strong>Smart A.I. Lens</strong> y cómo funciona. Empiecen preguntándole: "¿Qué es la Smart A.I. Lens?" y luego sigan con las dudas que tengan. Recuerden, <strong>XOLO es el experto</strong>, así que no tengan miedo de preguntarle todo. Yo estaré circulando para asegurarme de que todos están interactuando.</p>
+                        <p class="dialogue assistant">Perfecto. Ahora vamos a aprender los conceptos clave con nuestro experto. Abran el chat de XOLO y escriban el prompt que ven en pantalla. XOLO les explicará cómo el A.I. Lens puede detectar colores y les introducirá al fascinante mundo del aprendizaje automático. ¡Pregúntenle todo lo que no entiendan!</p>
                     </div>
                 </div>
             </div>
 
-            <!-- ACTIVIDAD 3: AI GYM - PRÁCTICA GUIADA -->
+            <!-- ACTIVIDAD 3: BRAIN SPARK -->
             <div class="activity-card" id="activity-3">
                 <div class="activity-header">
-                    <h2>💪 Actividad 3: AI GYM - Construcción del Programa</h2>
+                    <h2>💡 Actividad 3: Brain Spark</h2>
                     <div class="activity-timer">
-                        <span class="activity-duration">⏱️ 10:00</span>
-                        <button class="timer-start-btn" data-duration="600">Iniciar</button>
+                        <span class="activity-duration">⏱️ 20:00</span>
+                        <button class="timer-start-btn" data-duration="1200">Iniciar</button>
                     </div>
                 </div>
 
-                <!-- ROLES CLAROS -->
                 <div class="roles-section">
                     <div class="role-card role-teacher">
                         <h4>👨‍🏫 Rol del Maestro</h4>
                         <ul>
-                            <li>Proyecta diapositiva 3 con pseudocódigo visual</li>
-                            <li>Indica: "Pidan a XOLO su plan de código personalizado"</li>
-                            <li>Supervisa que todos reciban el GCS de XOLO</li>
-                            <li>Gestiona el timing (aviso a los 7 minutos)</li>
+                            <li>Proyecta la diapositiva 3.</li>
+                            <li>Indica: "Pidan a XOLO que los ayude a idear un proyecto para usar lo aprendido. Cuando hayan pasado su GCS a bloques en MakeCode, pruébenlo con el simulador y luego con el microbit".</li>
+                            <li>Entrega por parejas los micro:bits y los A.I. lens conforme los alumnos prueben su GCS.</li>
+                            <li>Ayuda a implementar su GCS en MakeCode.</li>
                         </ul>
                     </div>
                     <div class="role-card role-xolo">
                         <h4>🤖 Rol de XOLO</h4>
                         <ul>
-                            <li>Genera el "GCS" (plan personalizado) cuando se lo pidan</li>
-                            <li>Explica cada bloque del código</li>
-                            <li>Ayuda a traducir el plan a bloques de MakeCode</li>
-                            <li>Resuelve errores de sintaxis o lógica</li>
+                            <li>Ayuda a desarrollar una idea y un VIBE que aplique el reconocimiento de colores con AI Lens.</li>
+                            <li>Entrega el GSC de la idea del genio.</li>
+                            <li>Resuelve errores de sintaxis o lógica.</li>
                         </ul>
                     </div>
                     <div class="role-card role-student">
                         <h4>👦 Rol del Alumno</h4>
                         <ul>
-                            <li>Pide a XOLO: "Dame mi plan (GCS) para el programa"</li>
-                            <li>Conecta la A.I. Lens al Cutebot</li>
-                            <li>Traduce el plan de XOLO a bloques en MakeCode</li>
-                            <li>Pregunta a XOLO cuando no entiende un bloque</li>
+                            <li>Trabajar con XOLO una idea y un VIBE para usar la AI Lens y el reconocimiento de color.</li>
+                            <li>Traducir el GCS de XOLO a bloques en MakeCode.</li>
+                            <li>Depurar su programa con XOLO.</li>
+                            <li>Conectar la AI Lens al Cutebot.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- DIAPOSITIVA ÚNICA -->
                 <div class="slide-reference">
-                    <h4>📊 Diapositiva 3: Estructura del Programa</h4>
+                    <h4>📊 Diapositiva 3: Brain Spark</h4>
                     <div class="slide-content">
-                        <p><strong>🎯 Tu programa debe hacer:</strong></p>
-                        <div class="pseudocode">
-                            <p>1️⃣ <strong>AL INICIAR:</strong> Configurar la A.I. Lens</p>
-                            <p>2️⃣ <strong>POR SIEMPRE:</strong></p>
-                            <p>&nbsp;&nbsp;&nbsp;• Leer el color que ve la lente</p>
-                            <p>&nbsp;&nbsp;&nbsp;• Si detecta un color → Mostrarlo en pantalla</p>
-                            <p>&nbsp;&nbsp;&nbsp;• Si no detecta nada → Limpiar pantalla</p>
+                        <p><strong>1. 💬 Pide a XOLO que te ayude a crear:</strong></p>
+                        <div class="prompt-box">
+                           <pre>"Xolo, ayúdame a idear un proyecto y mi vibe que integre uso de A.I. Lens y reconocimiento de colores."</pre>
                         </div>
-                        <p class="highlight-text">💬 Pide a XOLO: "Dame mi plan (GCS) con los bloques específicos"</p>
-                    </div>
-                </div>
-
-                <!-- GUION OPCIONAL COLAPSABLE -->
-                <div class="optional-script">
-                    <button class="collapsible-button">📖 Ver guion detallado (opcional)</button>
-                    <div class="collapsible-content">
-                        <p class="dialogue assistant">¡A construir! Ahora le van a pedir a <strong>XOLO</strong> que les dé su plan personalizado. Díganle: "Dame mi plan (GCS) para el programa de reconocimiento de colores". Él les dará los bloques exactos que necesitan. Después, conecten la <strong>A.I. Lens</strong> a su <strong>Cutebot</strong> y vayan traduciendo el plan a bloques en <strong>MakeCode</strong>. Si se traban en algún paso, pregunten a <strong>XOLO</strong>. Tienen 10 minutos.</p>
-                    </div>
-                </div>
-
-                <!-- PROMPT DE DESAFÍO -->
-                <div class="challenge-prompt">
-                    <h4>🚀 Prompt de Desafío (para quienes terminen rápido)</h4>
-                    <div class="prompt-box">
-                        <p><strong>Si terminaste el programa básico, pregunta a XOLO:</strong></p>
-                        <p class="challenge-text">"Ya hice que mi Cutebot muestre el color detectado. ¿Cómo puedo hacer que también encienda sus LEDs RGB del mismo color que ve?"</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ACTIVIDAD 4: BRAIN SPARK - EXPERIMENTACIÓN -->
-            <div class="activity-card" id="activity-4">
-                <div class="activity-header">
-                    <h2>🧪 Actividad 4: Brain Spark - Experimentación</h2>
-                    <div class="activity-timer">
-                        <span class="activity-duration">⏱️ 15:00</span>
-                        <button class="timer-start-btn" data-duration="900">Iniciar</button>
-                    </div>
-                </div>
-
-                <!-- ROLES CLAROS -->
-                <div class="roles-section">
-                    <div class="role-card role-teacher">
-                        <h4>👨‍🏫 Rol del Maestro</h4>
-                        <ul>
-                            <li>Proyecta diapositiva 4 con retos de experimentación</li>
-                            <li>Circula observando los experimentos</li>
-                            <li>Motiva: "¿Qué pasa si cambias la iluminación?"</li>
-                            <li>Gestiona alertas de tiempo (5 min restantes)</li>
-                        </ul>
-                    </div>
-                    <div class="role-card role-xolo">
-                        <h4>🤖 Rol de XOLO</h4>
-                        <ul>
-                            <li>Ayuda a interpretar resultados inesperados</li>
-                            <li>Explica por qué algunos colores no se detectan bien</li>
-                            <li>Guía modificaciones del código si quieren optimizar</li>
-                            <li>Introduce conceptos de limitaciones de la IA</li>
-                        </ul>
-                    </div>
-                    <div class="role-card role-student">
-                        <h4>👦 Rol del Alumno</h4>
-                        <ul>
-                            <li>Prueba con todas las tarjetas de colores</li>
-                            <li>Experimenta con distancia y ángulos</li>
-                            <li>Prueba colores no predefinidos</li>
-                            <li>Consulta a XOLO cuando los resultados son raros</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- DIAPOSITIVA ÚNICA -->
-                <div class="slide-reference">
-                    <h4>📊 Diapositiva 4: Retos de Experimentación</h4>
-                    <div class="slide-content">
-                        <p><strong>🔬 Experimenta y descubre:</strong></p>
+                        <p style="margin-top: 1.5rem;"><strong>2. 🔬 Experimenta y descubre con tu programa:</strong></p>
                         <ul>
                             <li>¿Detecta todos los colores de tus tarjetas?</li>
                             <li>¿Qué pasa con un color que no está en su "memoria"?</li>
@@ -1434,19 +324,16 @@ Mantén un tono motivador, usa ejemplos del mundo real y anímales a experimenta
                             <li>¿A qué distancia deja de funcionar bien?</li>
                             <li>¿Qué pasa si mueves la tarjeta muy rápido?</li>
                         </ul>
-                        <p class="highlight-text">💬 Consulta con XOLO: "¿Por qué pasó [resultado inesperado]?"</p>
                     </div>
                 </div>
 
-                <!-- GUION OPCIONAL COLAPSABLE -->
                 <div class="optional-script">
                     <button class="collapsible-button">📖 Ver guion detallado (opcional)</button>
                     <div class="collapsible-content">
-                        <p class="dialogue assistant">¡Hora de experimentar como científicos! Tomen las tarjetas de colores y prueben todo. ¿Reconoce todos los colores? ¿Qué pasa si la luz cambia? ¿Y si la tarjeta está muy lejos? Estas pruebas les ayudarán a entender que la IA tiene limitaciones. Si ven algo raro, pregunten a <strong>XOLO</strong>: "¿Por qué mi Cutebot confundió el naranja con rojo?" Él les explicará cómo funciona el entrenamiento. Recuerden turnarse para experimentar. ¡Tienen 15 minutos!</p>
+                        <p class="dialogue assistant">¡Es hora de crear! Pidan a XOLO que los ayude a idear un programa que use la A.I. Lens y el reconocimiento de colores. Definan su 'vibe', consigan su GCS de XOLO y pásenlo a bloques en MakeCode. Una vez que funcione, ¡a experimentar! Prueben las preguntas que ven en pantalla: ¿detecta bien los colores? ¿qué pasa con la luz, la distancia, la velocidad? Los que vayan terminando, levanten la mano para que les entregue su Smart A.I. Lens y puedan probarlo en el mundo real.</p>
                     </div>
                 </div>
 
-                <!-- PROMPT DE DESAFÍO -->
                 <div class="challenge-prompt">
                     <h4>🚀 Prompt de Desafío (para quienes terminen rápido)</h4>
                     <div class="prompt-box">
@@ -1456,76 +343,109 @@ Mantén un tono motivador, usa ejemplos del mundo real y anímales a experimenta
                 </div>
             </div>
 
-            <!-- ACTIVIDAD 5: GNIUS STORM - COMPARTIR -->
-            <div class="activity-card" id="activity-5">
+            <!-- ACTIVIDAD 4: GNIUS STORM - COMPARTIR -->
+            <div class="activity-card" id="activity-4">
                 <div class="activity-header">
-                    <h2>⚡ Actividad 5: Gnius STORM - Compartir y Reflexionar</h2>
+                    <h2>⚡ Actividad 4: Gnius STORM - Compartir y Reflexionar</h2>
                     <div class="activity-timer">
                         <span class="activity-duration">⏱️ 5:00</span>
                         <button class="timer-start-btn" data-duration="300">Iniciar</button>
                     </div>
                 </div>
 
-                <!-- ROLES CLAROS -->
                 <div class="roles-section">
                     <div class="role-card role-teacher">
                         <h4>👨‍🏫 Rol del Maestro</h4>
                         <ul>
-                            <li>Organiza las parejas para compartir</li>
-                            <li>Gestiona los tiempos: 2 min demo + 2 min reflexión + 1 min cierre</li>
-                            <li>Facilita retroalimentación constructiva</li>
-                            <li>Cierra con reflexión sobre aplicaciones reales</li>
+                            <li>Organiza las parejas para compartir.</li>
+                            <li>Gestiona los tiempos: 2 min demo + 2 min reflexión + 1 min cierre.</li>
+                            <li>Facilita retroalimentación constructiva.</li>
+                            <li>Cierra con reflexión sobre aplicaciones reales.</li>
                         </ul>
                     </div>
                     <div class="role-card role-xolo">
                         <h4>🤖 Rol de XOLO</h4>
                         <ul>
-                            <li>Disponible para dudas finales</li>
-                            <li>Puede responder preguntas sobre próximos pasos</li>
+                            <li>Disponible para dudas finales.</li>
                         </ul>
                     </div>
                     <div class="role-card role-student">
                         <h4>👦 Rol del Alumno</h4>
                         <ul>
-                            <li>Demuestra su programa funcionando a otra pareja</li>
-                            <li>Explica qué colores reconoció bien</li>
-                            <li>Comparte un descubrimiento interesante</li>
-                            <li>Da retroalimentación positiva al compañero</li>
+                            <li>Demuestra su programa funcionando a otra pareja.</li>
+                            <li>Explica qué colores reconoció bien.</li>
+                            <li>Comparte un descubrimiento interesante.</li>
+                            <li>Da retroalimentación positiva al compañero.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- ESTRUCTURA THINK-PAIR-SHARE -->
-                <div class="tps-structure">
-                    <div class="tps-phase">
-                        <h4>🤔 THINK (30 seg)</h4>
-                        <p>Reflexión individual: ¿Qué colores reconoció mejor tu Cutebot? ¿Qué te sorprendió?</p>
+                <div class="slide-reference">
+                    <h4>📊 Diapositiva 4: Think-Pair-Share</h4>
+                    <div class="slide-content tps-structure">
+                         <div class="tps-phase">
+                            <h4>🤔 THINK (30 seg)</h4>
+                            <p>Reflexión individual: ¿Qué colores reconoció mejor tu Cutebot? ¿Qué te sorprendió?</p>
+                        </div>
+                        <div class="tps-phase">
+                            <h4>👥 PAIR (2 min)</h4>
+                            <p>Con otra pareja: Demuestren su programa y expliquen su experiencia</p>
+                            <p class="highlight-text">Frase guía: "Mi Cutebot reconoció [colores]. Me sorprendió que [descubrimiento]."</p>
+                        </div>
+                        <div class="tps-phase">
+                            <h4>💬 SHARE (2 min)</h4>
+                            <p>Retroalimentación mutua y cierre del maestro.</p>
+                        </div>
                     </div>
-                    <div class="tps-phase">
-                        <h4>👥 PAIR (2 min)</h4>
-                        <p>Con otra pareja: Demuestren su programa y expliquen su experiencia</p>
-                        <p class="highlight-text">Frase guía: "Mi Cutebot reconoció [colores]. Me sorprendió que [descubrimiento]."</p>
+                </div>
+            </div>
+
+            <!-- ACTIVIDAD 5: ENTREGA DE EVIDENCIAS -->
+            <div class="activity-card" id="activity-5">
+                <div class="activity-header">
+                    <h2>✅ Actividad 5: Entrega de Evidencias</h2>
+                    <div class="activity-timer">
+                        <span class="activity-duration">⏱️ 5:00</span>
+                        <button class="timer-start-btn" data-duration="300">Iniciar</button>
                     </div>
-                    <div class="tps-phase">
-                        <h4>💬 SHARE (2 min)</h4>
-                        <p>Retroalimentación mutua:</p>
+                </div>
+
+                <div class="roles-section">
+                    <div class="role-card role-teacher">
+                        <h4>👨‍🏫 Rol del Maestro</h4>
                         <ul>
-                            <li>"Me gustó que tu A.I. Lens reconociera [color específico]"</li>
-                            <li>"Es interesante tu descubrimiento sobre [observación]"</li>
-                            <li>"Para mejorar, podrías probar [sugerencia]"</li>
+                            <li>Proyecta diapositiva 5 con las instrucciones.</li>
+                            <li>Guía a los estudiantes para tomar las capturas.</li>
+                            <li>Asegura que todos suban sus evidencias a Gnius Space.</li>
+                            <li>Felicita al grupo por completar la misión.</li>
                         </ul>
                     </div>
-                    <div class="tps-phase">
-                        <h4>🎯 CIERRE (30 seg)</h4>
-                        <p><strong>Reflexión final:</strong> "Hoy le dimos visión IA a nuestros robots. Esto es posible porque la IA fue entrenada con miles de ejemplos de colores. ¿Dónde más usan las máquinas visión IA? (clasificación de frutas, control de calidad, seguridad...)"</p>
+                    <div class="role-card role-xolo">
+                        <h4>🤖 Rol de XOLO</h4>
+                        <ul>
+                            <li>XOLO desactivado.</li>
+                        </ul>
+                    </div>
+                    <div class="role-card role-student">
+                        <h4>👦 Rol del Alumno</h4>
+                        <ul>
+                            <li>Tomar screenshot de su código en MakeCode.</li>
+                            <li>Tomar screenshot de su conversación con XOLO.</li>
+                            <li>Subir ambas evidencias a Gnius Space.</li>
+                            <li>Dar click en "Finalizar Misión".</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- GUION OPCIONAL COLAPSABLE -->
-                <div class="optional-script">
-                    <button class="collapsible-button">📖 Ver guion detallado (opcional)</button>
-                    <div class="collapsible-content">
-                        <p class="dialogue assistant">¡Tiempo de compartir, científicos! Primero, 30 segundos para pensar: ¿Qué colores reconoció mejor su Cutebot? Ahora júntense con otra pareja y demuestren su programa. Expliquen: "Mi Cutebot reconoció [lista de colores]. Me sorprendió que [su descubrimiento]." Después, denle retroalimentación positiva. Finalmente, recuerden: hoy abrieron los ojos de la IA. Esta tecnología se usa en fábricas, control de calidad, y mucho más. ¡Excelente trabajo!</p>
+                <div class="slide-reference">
+                    <h4>📊 Diapositiva 5: ¡Misión Cumplida!</h4>
+                    <div class="slide-content">
+                        <p><strong>📸 Para terminar, sube tus evidencias a Gnius Space:</strong></p>
+                        <ol>
+                            <li>Una captura de pantalla de tu programa final en <strong>MakeCode</strong>.</li>
+                            <li>Una captura de pantalla de tu conversación con <strong>XOLO</strong> donde te dio tu GCS.</li>
+                        </ol>
+                        <p class="highlight-text" style="margin-top: 1rem;">¡No olvides dar click en el botón <strong>"Finalizar Misión"</strong> cuando termines!</p>
                     </div>
                 </div>
             </div>
@@ -1533,264 +453,6 @@ Mantén un tono motivador, usa ejemplos del mundo real y anímales a experimenta
         </main>
     </div>
 
-    <script>
-// ========== THEME TOGGLE ==========
-const themeToggleInput = document.getElementById("theme-toggle-input");
-const body = document.body;
-
-function setTheme() {
-  if (localStorage.getItem("dark-mode") === "true") {
-    body.classList.add("dark-mode");
-    themeToggleInput.checked = true;
-  } else {
-    body.classList.remove("dark-mode");
-    themeToggleInput.checked = false;
-  }
-}
-
-setTheme();
-
-themeToggleInput.addEventListener("change", () => {
-  body.classList.toggle("dark-mode");
-  if (body.classList.contains("dark-mode")) {
-    localStorage.setItem("dark-mode", "true");
-  } else {
-    localStorage.setItem("dark-mode", "false");
-  }
-});
-
-// ========== COLLAPSIBLE SECTIONS ==========
-const collapsibleButtons = document.querySelectorAll(".collapsible-button");
-
-collapsibleButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const content = button.nextElementSibling;
-    content.classList.toggle("active");
-  });
-});
-
-// ========== GLOBAL TIMER (Countdown) ==========
-const globalTimer = document.getElementById("global-timer");
-const globalStartStopButton = document.getElementById("global-start-stop");
-const globalResetButton = document.getElementById("global-reset");
-
-let globalInterval;
-let globalTimeLeft = 40 * 60; // 40 minutos en segundos
-let globalTimerRunning = false;
-
-function updateGlobalTimerDisplay() {
-  const minutes = Math.floor(globalTimeLeft / 60);
-  const seconds = globalTimeLeft % 60;
-  globalTimer.textContent = `⏱️ ${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-  
-  // Cambiar color según tiempo restante
-  if (globalTimeLeft <= 60) {
-    globalTimer.style.color = "#ff6b35"; // Naranja cuando queda 1 min
-  } else if (globalTimeLeft <= 300) {
-    globalTimer.style.color = "#fbc02d"; // Amarillo cuando quedan 5 min
-  } else {
-    globalTimer.style.color = "white";
-  }
-}
-
-function startStopGlobalTimer() {
-  if (globalTimerRunning) {
-    clearInterval(globalInterval);
-    globalStartStopButton.textContent = "Start";
-  } else {
-    globalInterval = setInterval(() => {
-      if (globalTimeLeft > 0) {
-        globalTimeLeft--;
-        updateGlobalTimerDisplay();
-        
-        // Alerta al llegar a 0
-        if (globalTimeLeft === 0) {
-          clearInterval(globalInterval);
-          globalTimerRunning = false;
-          globalStartStopButton.textContent = "Start";
-          alert("⏰ ¡Tiempo de sesión terminado! (40 minutos)");
-        }
-      }
-    }, 1000);
-    globalStartStopButton.textContent = "Stop";
-  }
-  globalTimerRunning = !globalTimerRunning;
-}
-
-function resetGlobalTimer() {
-  clearInterval(globalInterval);
-  globalTimerRunning = false;
-  globalTimeLeft = 40 * 60;
-  updateGlobalTimerDisplay();
-  globalStartStopButton.textContent = "Start";
-}
-
-globalStartStopButton.addEventListener("click", startStopGlobalTimer);
-globalResetButton.addEventListener("click", resetGlobalTimer);
-
-// ========== ACTIVITY TIMERS (Individual Countdown) ==========
-let activityIntervals = {};
-
-function updateActivityTimerDisplay(button, timeLeft) {
-  const durationSpan = button.previousElementSibling;
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
-  durationSpan.textContent = `⏱️ ${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-  
-  // Cambiar color según tiempo restante
-  if (timeLeft <= 30) {
-    durationSpan.style.color = "#ff6b35"; // Naranja cuando quedan 30 seg
-  } else if (timeLeft <= 60) {
-    durationSpan.style.color = "#fbc02d"; // Amarillo cuando queda 1 min
-  } else {
-    durationSpan.style.color = "#00a3a3"; // Color normal
-  }
-}
-
-function startActivityTimer(button) {
-  const duration = parseInt(button.dataset.duration);
-  const activityId = button.closest('.activity-card').id;
-  
-  // Si ya hay un timer corriendo para esta actividad, lo detenemos
-  if (activityIntervals[activityId]) {
-    clearInterval(activityIntervals[activityId].interval);
-    delete activityIntervals[activityId];
-    button.textContent = "Iniciar";
-    button.classList.remove("running");
-    
-    // Restaurar tiempo original
-    const originalMinutes = Math.floor(duration / 60);
-    const originalSeconds = duration % 60;
-    button.previousElementSibling.textContent = `⏱️ ${String(originalMinutes).padStart(2, "0")}:${String(originalSeconds).padStart(2, "0")}`;
-    button.previousElementSibling.style.color = "#00a3a3";
-    return;
-  }
-  
-  // Iniciar nuevo timer
-  let timeLeft = duration;
-  button.classList.add("running");
-  button.textContent = "Detener";
-  
-  const interval = setInterval(() => {
-    if (timeLeft > 0) {
-      timeLeft--;
-      updateActivityTimerDisplay(button, timeLeft);
-      
-      // Alerta al llegar a 0
-      if (timeLeft === 0) {
-        clearInterval(interval);
-        delete activityIntervals[activityId];
-        button.textContent = "Iniciar";
-        button.classList.remove("running");
-        
-        // Alerta visual
-        const activityTitle = button.closest('.activity-card').querySelector('h2').textContent;
-        alert(`⏰ ¡Tiempo de actividad terminado!\n\n${activityTitle}`);
-        
-        // Restaurar display original
-        const originalMinutes = Math.floor(duration / 60);
-        const originalSeconds = duration % 60;
-        button.previousElementSibling.textContent = `⏱️ ${String(originalMinutes).padStart(2, "0")}:${String(originalSeconds).padStart(2, "0")}`;
-        button.previousElementSibling.style.color = "#00a3a3";
-      }
-    }
-  }, 1000);
-  
-  activityIntervals[activityId] = { interval, duration };
-}
-
-// Attach event listeners to activity timer buttons
-document.addEventListener('DOMContentLoaded', () => {
-  const timerButtons = document.querySelectorAll('.timer-start-btn');
-  timerButtons.forEach(button => {
-    button.addEventListener('click', () => startActivityTimer(button));
-  });
-});
-
-// ========== COPY PROMPT FUNCTIONALITY ==========
-function copyPrompt(promptId) {
-  const promptElement = document.getElementById(promptId);
-  const text = promptElement.textContent;
-  
-  navigator.clipboard.writeText(text).then(() => {
-    // Feedback visual
-    const copyBtn = event.target.closest('.copy-btn');
-    const originalText = copyBtn.innerHTML;
-    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copiado';
-    copyBtn.style.backgroundColor = '#4caf50';
-    
-    setTimeout(() => {
-      copyBtn.innerHTML = originalText;
-      copyBtn.style.backgroundColor = '';
-    }, 2000);
-  }).catch(err => {
-    alert('Error al copiar el texto. Por favor, cópialo manualmente.');
-  });
-}
-
-// ========== ACTIVITY NAVIGATION ==========
-const activityLinks = document.querySelectorAll(".activity-list a");
-const activityCards = document.querySelectorAll(".activity-card");
-const progressBar = document.querySelector(".progress");
-const numberOfActivities = activityCards.length;
-
-// Hide all activity cards initially
-activityCards.forEach((card) => {
-  card.classList.remove("active");
-  card.style.display = "none";
-});
-
-// Function to show the selected activity card
-function showActivity(activityId) {
-  // Fade out the current active card
-  const currentActive = document.querySelector(".activity-card.active");
-  if (currentActive) {
-    currentActive.classList.remove("active");
-    setTimeout(() => {
-      currentActive.style.display = "none";
-    }, 333);
-  }
-
-  // Show the selected activity card and fade it in
-  const selectedActivity = document.getElementById(activityId);
-  if (selectedActivity) {
-    selectedActivity.style.display = "block";
-    setTimeout(() => {
-      selectedActivity.classList.add("active");
-    }, 50);
-    updateProgressBar(activityId);
-  }
-}
-
-// Function to update the progress bar
-function updateProgressBar(activityId) {
-  const activityIndex = parseInt(activityId.split("-")[1]);
-
-  let progressPercentage;
-
-  if (numberOfActivities <= 1) {
-    progressPercentage = (activityIndex === 0 && numberOfActivities === 1) ? 100 : 0;
-  } else {
-    progressPercentage = (activityIndex / (numberOfActivities - 1)) * 100;
-  }
-  
-  progressPercentage = Math.min(100, Math.max(0, progressPercentage));
-  progressBar.style.width = `${progressPercentage}%`;
-}
-
-// Add event listeners to activity links
-activityLinks.forEach((link) => {
-  link.addEventListener("click", (event) => {
-    event.preventDefault();
-    const activityId = link.getAttribute("href").substring(1);
-    showActivity(activityId);
-  });
-});
-
-// Show the first activity by default on initial load
-if (activityCards.length > 0) {
-  showActivity(activityCards[0].id);
-}
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
